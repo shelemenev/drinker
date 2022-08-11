@@ -76,6 +76,23 @@ function checkStep() {
     }
   }
 
+  if (enemyValue == myValue) {
+    const myDivs = document.querySelectorAll('.my div')
+    const enemyDivs = document.querySelectorAll('.enemy div')
+
+    if (myDivs.length > 1 && enemyDivs.length > 1) {
+      const myDiv = document.querySelector('.my div')
+      document.querySelector('.my').removeChild(myDiv)
+      document.querySelector('.field').appendChild(myDiv)
+      myDiv.className = 'card_unknown'
+      myDiv.removeEventListener('click', checkCards)
+      const enemyDiv = document.querySelector('.enemy div')
+      document.querySelector('.enemy').removeChild(enemyDiv)
+      document.querySelector('.field').appendChild(enemyDiv)
+      enemyDiv.className = 'card_unknown'
+    }
+  }
+
   isMyMove = true
   checkWin()
 }
